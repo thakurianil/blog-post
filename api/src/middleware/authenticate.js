@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { config } from "../config/config";
+import { config } from "../config/config.js";
 
 // Middleware to check JWT token
 export const authenticateJWT = (req, res, next) => {

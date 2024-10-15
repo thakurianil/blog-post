@@ -33,7 +33,7 @@ export const getUserById = async (id) => {
 };
 
 export const createUser = async (user) => {
-  const newUser = new Task(user);
+  const newUser = new User(user);
   return await newUser.save();
 };
 

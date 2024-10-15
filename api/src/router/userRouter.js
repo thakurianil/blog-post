@@ -1,12 +1,14 @@
 import express from "express";
-import { createUser, getUserById } from "../models/userSchema";
+import { createUser, getUserById } from "../models/userSchema.js";
+import { authenticateJWT } from "../middleware/authenticate.js";
+
 const router = express.Router();
 
 // Get uer data
-router.get("/:id", async (req, res) => {
+router.get("/profile", authenticateJWT, async (req, res) => {
   try {
-    const { id } = req.params;
-    const userData = await getUserById(id);
+    const { user } = req;
+    const userData = await getUserById(user._id);
 
     const respObj = {
       status: true,

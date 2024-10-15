@@ -4,20 +4,28 @@ import {
   deletePost,
   getPostById,
   getPosts,
-} from "../models/postSchema";
-import { authenticateJWT } from "../middleware/authenticate";
+} from "../models/postSchema.js";
+import { authenticateJWT } from "../middleware/authenticate.js";
+import { getUserById } from "../models/userSchema.js";
 
 const router = express.Router();
 
 // get all posts
 router.get("/", async (req, res) => {
   try {
-    const data = await getPosts();
+    let data = await getPosts();
+
+    let postData = [...data];
+
+    for (let i = 0; i < postData.length; i++) {
+      var author = await getUserById(postData[i].author);
+      postData[i].test = 100000;
+    }
 
     const respObj = {
       status: true,
       message: "All Posts Fetched!",
-      data: data,
+      data: postData,
     };
 
     return res.status(200).send(respObj);
@@ -41,7 +49,7 @@ router.post("/", authenticateJWT, async (req, res) => {
       title,
       content,
       image,
-      auther: user._id,
+      author: user._id,
     });
 
     const respObj = {

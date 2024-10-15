@@ -1,7 +1,7 @@
 import express from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { createUser, findUser, getUserById } from "../models/userSchema";
+import { createUser, findUser } from "../models/userSchema.js";
 import { config } from "../config/config.js";
 
 const router = express.Router();
@@ -41,6 +41,14 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
   const user = await findUser({ email }, true);
+
+  if (!user) {
+    const errObj = {
+      status: false,
+      message: "Invalid email or password",
+    };
+    return res.status(401).send(errObj);
+  }
 
   const isMatch = bcrypt.compare(password, user.password);
 

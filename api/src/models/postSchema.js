@@ -14,8 +14,8 @@ const postSchema = new mongoose.Schema({
     default: "",
   },
   author: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
     required: true,
   },
   createdAt: {
@@ -27,7 +27,7 @@ const postSchema = new mongoose.Schema({
 export const Post = mongoose.model("post", postSchema);
 
 export const getPosts = async () => {
-  return await Post.find();
+  return await Post.find().populate("author").exec();
 };
 
 export const getPostById = async (id) => {
