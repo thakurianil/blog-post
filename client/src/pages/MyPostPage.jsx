@@ -3,6 +3,8 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import Header from "../components/Navbar";
 import PostCard from "../components/PostCard";
 import Footer from "../components/footer";
+import { FloatingButton } from "../components/FloatingButton";
+import { Link } from "react-router-dom";
 
 const MyPostPage = () => {
   const post = {
@@ -16,6 +18,9 @@ const MyPostPage = () => {
   return (
     <>
       <Header />
+      <Link to="/mypost/create">
+        <FloatingButton />
+      </Link>
       <Container
         fluid
         className="d-flex justify-content-center align-items-center"
