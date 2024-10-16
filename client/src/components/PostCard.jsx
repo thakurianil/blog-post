@@ -1,26 +1,45 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const PostCard = () => {
+const PostCard = ({ post }) => {
   return (
     <>
-      <Card style={{ width: "18rem" }}>
-        <div style={{ width: "100%", height: "18rem", overflow: "hidden" }}>
+      <Link
+        to="/article"
+        className="post"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <Card>
           <Card.Img
             variant="top"
             src="/blog1.jpg"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ maxHeight: "300px", width: "100%", objectFit: "cover" }}
           />
-        </div>
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
+          <Card.Body className="text-start">
+            <Card.Title className="d-flex justify-content-between ">
+              {post.title}
+
+              {post.own ? (
+                <FontAwesomeIcon
+                  icon={faTrash}
+                  size="sm"
+                  style={{ cursor: "pointer", color: "black" }}
+                  title="Delete Article"
+                  onClick={() => alert("Delete this article?")} // Example action
+                />
+              ) : (
+                ""
+              )}
+            </Card.Title>
+            <hr />
+            <Card.Text>{post.content}</Card.Text>
+            <strong className="author-info">- {post.author}</strong>
+          </Card.Body>
+        </Card>
+      </Link>
     </>
   );
 };

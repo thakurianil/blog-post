@@ -1,35 +1,24 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-import { Container, Row, Col, Button } from "react-bootstrap";
 import HomePage from "./pages/HomePage";
-import Header from "./components/Navbar";
-import PostCard from "./components/PostCard";
-import Footer from "./components/footer";
+import { Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import PostPage from "./pages/PostPage";
+import MyPostPage from "./pages/MyPostPage";
 
 function App() {
   return (
     <>
-      <Header />
-      <Container
-        fluid
-        className="d-flex justify-content-center align-items-center"
-        style={{ height: "auto" }}
-      >
-        <Row>
-          <Col className="text-center">
-            <h1>Blog Application Template</h1>
-            <hr />
-            <Button>CLICK HERE</Button>
-            <HomePage />
-            <div className="d-flex gap-4">
-              <PostCard />
-              <PostCard />
-            </div>
-          </Col>
-        </Row>
-      </Container>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+
+        <Route path="/article" element={<PostPage />} />
+        <Route path="/mypost" element={<MyPostPage />} />
+      </Routes>
     </>
   );
 }

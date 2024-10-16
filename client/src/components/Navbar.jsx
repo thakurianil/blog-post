@@ -1,4 +1,5 @@
 import { Container, Form, Nav, Navbar, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -18,8 +19,8 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/mypost">My Post</Nav.Link>
             </Nav>
           </Navbar.Collapse>
 
@@ -33,7 +34,9 @@ const Header = () => {
             <Button className="me-2" variant="outline-success">
               Search
             </Button>
-            <Button variant="warning">Login</Button>
+            <Link to="/login">
+              <Button variant="warning">Login</Button>
+            </Link>
           </Form>
         </Container>
       </Navbar>

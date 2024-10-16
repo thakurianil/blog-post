@@ -4,15 +4,15 @@ import Header from "../components/Navbar";
 import PostCard from "../components/PostCard";
 import Footer from "../components/footer";
 
-const HomePage = () => {
+const MyPostPage = () => {
   const post = {
     id: "id",
     title: "Post Title",
     content:
       "Some quick example text to build on the card title and make up the bulk of the card's content.",
     author: "John Doe",
+    own: true,
   };
-
   return (
     <>
       <Header />
@@ -42,4 +42,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default MyPostPage;

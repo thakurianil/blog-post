@@ -3,14 +3,30 @@ body,
 #root {
   min-height: 100vh;
   position: relative;
+  min-height: calc(100vh-150px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
+.post {
+  width: 30%;
+}
+
 footer.footer {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   bottom: 0;
+  height: 100px;
+}
+
+@media screen and (max-width: 800px) {
+  .post {
+    width: 100%;
+  }
 }
