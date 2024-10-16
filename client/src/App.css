@@ -25,6 +25,18 @@ footer.footer {
   height: 100px;
 }
 
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  font-size: 25px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 800px) {
   .post {
     width: 100%;
