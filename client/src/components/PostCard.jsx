@@ -7,39 +7,39 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 const PostCard = ({ post }) => {
   return (
     <>
-      <Link
-        to="/article"
-        className="post"
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <Card>
-          <Card.Img
-            variant="top"
-            src="/blog1.jpg"
-            style={{ maxHeight: "300px", width: "100%", objectFit: "cover" }}
-          />
-          <Card.Body className="text-start">
-            <Card.Title className="d-flex justify-content-between ">
+      <Card className="post">
+        <Card.Img
+          variant="top"
+          src="/blog1.jpg"
+          style={{ maxHeight: "300px", width: "100%", objectFit: "cover" }}
+        />
+        <Card.Body className="text-start">
+          <Card.Title className="d-flex justify-content-between ">
+            <Link
+              to="/article"
+              className="post"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
               {post.title}
+            </Link>
 
-              {post.own ? (
-                <FontAwesomeIcon
-                  icon={faTrash}
-                  size="sm"
-                  style={{ cursor: "pointer", color: "black" }}
-                  title="Delete Article"
-                  onClick={() => alert("Delete this article?")} // Example action
-                />
-              ) : (
-                ""
-              )}
-            </Card.Title>
-            <hr />
-            <Card.Text>{post.content}</Card.Text>
-            <strong className="author-info">- {post.author}</strong>
-          </Card.Body>
-        </Card>
-      </Link>
+            {post.owner ? (
+              <FontAwesomeIcon
+                icon={faTrash}
+                size="sm"
+                style={{ cursor: "pointer", color: "black" }}
+                title="Delete Article"
+                onClick={() => alert("Delete this article?")} // Example action
+              />
+            ) : (
+              ""
+            )}
+          </Card.Title>
+          <hr />
+          <Card.Text>{post.content}</Card.Text>
+          <strong className="author-info">- {post.author}</strong>
+        </Card.Body>
+      </Card>
     </>
   );
 };
