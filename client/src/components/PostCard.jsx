@@ -29,7 +29,7 @@ const PostCard = ({ post }) => {
                 size="sm"
                 style={{ cursor: "pointer", color: "black" }}
                 title="Delete Article"
-                onClick={() => alert("Delete this article?")} // Example action
+                onClick={() => alert("Delete this article?")} 
               />
             ) : (
               ""
