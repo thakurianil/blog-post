@@ -60,3 +60,5 @@ GET {{api_url}}/post/{{id}}
 DELETE {{api_url}}/post/{{post_id}}
 Authorization: Bearer {{bearer_token}}
 
+###
+
